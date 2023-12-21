@@ -3,73 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
     <title>Merry Christmas</title>
 </head>
 <body>
-    <div class="c-big">
-        <img src="./border logo.png" class="logo">
-        <img src="./white-removebg-preview.png" class="wish" id="wishImage">
-        <audio id="backgroundMusic" preload="auto" loop>
-            <source src="./music.mp3" type="audio/mp3"> <!-- Adjust the music file path accordingly -->
-        </audio>
+    <div class="c-big" id="christmas-container">
+        <img src="./Logo-removebg-preview.png" class="logo">
+       
+            <img onclick="validateForm()" src="./output-onlinegiftools (1).gif" class="tap" id="tap">
+        
+       
+        <div class="form-container">
+            <form id="nameForm">
+                <input type="text" placeholder="Enter your name" id="nameInput" required>
+            </form>
+        </div>
+        
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var audio = document.getElementById("backgroundMusic");
-            var wishImage = document.getElementById("wishImage");
-
-            // Function to start audio when the wish image is clicked
-            function startAudio() {
-                audio.play();
-                // Remove the click event listener after the first click
-                wishImage.removeEventListener("click", startAudio);
-                
-            }
-
-            // Add click event listener to the wish image
-            wishImage.addEventListener("click", startAudio);
-        });
-    </script>
     
-</body>
-</html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden; /* Prevent scrolling */
+        }
 
-<style>
-    *{
-        margin: 1px;
-        
-        box-sizing: 5px;
-        overflow: hidden;
-        padding: 0px;
-    }
-    .c-big{
-        width: 100%;
-        height: 100vh;
-        background-image: url(./merry-christmas-images-19.jpg);
-        background-size: cover;
-        animation: animcolor 2s linear infinite;
-        overflow: hidden;
-        padding-bottom: 5px;
-        
-    }
-    .logo {
-            position: absolute;
-            bottom: 450px; /* Adjust the distance from the bottom */
-            left: 90px; /* Adjust the distance from the right */
-            max-width: 230px; /* Adjust the max-width as needed */
-            background-blend-mode: lighten;
-    }
-    .wish {
-            position: absolute;
-            bottom: 300px; /* Adjust the distance from the bottom */
-            left: 460px; /* Adjust the distance from the right */
-            max-width: 400px; /* Adjust the max-width as needed */
-            background-blend-mode: lighten;
+        .c-big {
+            position: relative;
+            max-width: 100vw;
+            height: 100vh;
+            background-image: url(./open\ gift\ \(1\)\ \(1\)\ \(1\).png);
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .form-container {
+            position: fixed;
+            bottom: 32vh;
+            right: 12vw; 
+            max-width: 200px; 
+            text-align: center;
+            padding: 0px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+           
+        }
+
+        body {
+            overflow: hidden; /* Prevent scrolling */
+            position: fixed; /* Fix the position */
+            width: 100%;
+        }
+
+        #nameForm {
+            margin: 0;
             
         }
-    @keyframes animcolor{
-        100%{
-            filter: hue-rotate(360deg);
+
+        #nameInput::placeholder {
+            color: #999;
+            text-align: center;
         }
-    }
-</style>
+
+        #nameInput {
+            width: 100%;
+            padding: 3px;
+            background-color: whitesmoke;
+            outline: none;
+            border: 2px solid red;
+            border-radius: 15px;
+            font-size: 16px;
+            font-style: oblique;
+            text-align: center;
+        }
+
+        .logo {
+            position: fixed;
+            bottom: 10%;
+            left: 5%; /* Adjust the left distance as needed */
+            max-width: 230px;
+            background-blend-mode: lighten;
+            overflow: hidden;
+
+        }
+
+        .tap {
+            position: fixed;
+            bottom: 16%;
+            right: 14.7%; /* Adjust the right distance as needed */
+            max-width: 120px;
+        }
+
+        
+    </style>
+
+  
+
+    
+    
+    
+     <script>
+        function submit() {
+            var nameInput = document.getElementById("nameInput").value;
+            localStorage.setItem("user_name",nameInput );
+
+            window.location.href = 'second.html';
+
+        }
+
+        function validateForm() {
+            var nameInput = document.getElementById("nameInput").value;
+            if (nameInput) {
+                // If the name is provided, proceed to the next page
+                submit();
+            } else {
+                // If the name is not provided, prevent the default behavior (page redirection)
+                event.preventDefault();
+                alert("Please enter your name.");
+            }
+        }
+        
+    </script>
+</body>
+</html>

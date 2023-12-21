@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Merry Christmas</title>
+</head>
+<body>
+    <div class="c-big">
+        <img src="./Logo-removebg-preview.png" class="logo">
+        <img src="./white-removebg-preview.png" class="wish" id="wishImage">
+
+        <div class="username-container" id="usernameContainer">
+            <p id="userName"></p>
+            
+        </div>
+        <img src="./desktop-wallpaper-music-live-for-android-neon-music (1).jpg" id="music" class="music">
+       
+        
+        
+    </div>
+
+<audio id="christmasAudio" preload="auto" loop>
+    <source src="./music.mp3" type="audio/mp3"> 
+</audio>
+</div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+        var storedname = localStorage.getItem("user_name");
+        console.log(storedname);
+
+        var userNameElement = document.getElementById("userName");
+            if (userNameElement && storedname) {
+                userNameElement.textContent = "Meery " +  "Christmas " + storedname ;
+            }
+        
+            var christmasAudio = document.getElementById("christmasAudio");
+
+            var musicElement = document.getElementById("music");
+
+if (musicElement && christmasAudio) {
+    musicElement.addEventListener("click", function() {
+        christmasAudio.play();
+    });
+}
+});
+
+
+
+
+    </script>
+</body>
+</html>
+
+<style>
+    *{
+        margin: 1px;
+        
+        box-sizing: 5px;
+        overflow: hidden;
+        padding: 0px;
+    }
+   
+    .c-big{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-image: url(./merry-christmas-images-19.jpg);
+        background-size: cover;
+        background-position: center;
+        
+        animation: animcolor 2s linear infinite;
+        overflow: hidden;
+       
+        
+    }
+    .logo {
+            position: fixed;
+            bottom: 450px; /* Adjust the distance from the bottom */
+            left: 90px; /* Adjust the distance from the right */
+            width: 230px; /* Adjust the max-width as needed */
+            
+            background-blend-mode: lighten;
+            background-size: cover;
+            background-position: center;
+    }
+    .wish {
+            position: fixed;
+            bottom: 300px; /* Adjust the distance from the bottom */
+            left: 460px; /* Adjust the distance from the right */
+            width: 400px; /* Adjust the max-width as needed */
+            
+            background-blend-mode: lighten;
+            background-size: cover;
+            background-position: center;
+            
+        }
+        .username-container {
+            position: fixed;
+            top: 15%;
+            right: 0;
+            transform: translate(100%, -50%);
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            animation: slideIn 2s forwards;
+            font-size:  x-large;
+            font-style: oblique;
+        }
+
+        #music {
+        position: fixed;
+        width: 50px;
+        height: 10vh;
+        top: 25%;
+        right: 8px;
+        z-index: 0;
+        background: rgba(255, 255, 255, 0.8); /* Match the background color of the username-container */
+        border-radius: 10px;
+        animation: slideIn 2s forwards;
+    }
+    @keyframes animcolor{
+        100%{
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    @keyframes slideIn {
+            from {
+                transform: translate(100%, -50%);
+            }
+            to {
+                transform: translate(0, -50%);
+            }
+        }
+</style>
